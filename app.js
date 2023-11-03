@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
+
 app.use(express.static('static'));
 app.use(express.urlencoded({ extended: true }));
 
@@ -15,9 +16,15 @@ app.post('/', (req, res) => {
   const realUsername = 'green';
   const realPassword = '1234';
   if (submittedUsername === realUsername && submittedPassword === realPassword) {
-    res.sendFile(__dirname + '/static/index.html'),
-      res.sendFile(__dirname + '/static/index.css'),
-      res.sendFile(__dirname + '/static/index.js')
+    app.post('/static/index.html', (req, res) => {
+      res.sendFile(__dirname + '/static/index.html'),
+        app.get('/static/index.css', (req, res) => {
+          res.sendFile(__dirname + '/static/index.css'),
+            app.get('/static/index.js', (req, res) => {
+              res.sendFile(__dirname + '/static/index.js')
+            });
+        });
+    });
   } else {
     res.send('로그인 실패')
   }
