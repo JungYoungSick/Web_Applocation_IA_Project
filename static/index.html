@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      * {
+        margin: 0;
+        border: 0;
+        box-sizing: border-box;
+      }
+      /* background */
+      #root {
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+      }
+      /* 첫번째 내용 레이아웃.*/
+      #root > div:nth-child(1) {
+        width: 100vw;
+        height: 20vh;
+        background-color: brown;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 두번째 내용 레이아웃*/
+      #root > div:nth-child(2) {
+        width: 100vw;
+        height: 10vh;
+        background-color: blueviolet;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #bergerMenu {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        margin-left: 15px;
+      }
+      #serchBox {
+        width: 300px;
+        height: 30px;
+        background-color: antiquewhite;
+      }
+      button {
+        width: 40px;
+        height: 30px;
+        background-color: aquamarine;
+      }
+
+      /* 세번째 내용 레이아웃 */
+      #root > div:nth-child(3) {
+        width: 100vw;
+        height: 70vh;
+        background-color: blue;
+      }
+      #userInfo {
+        width: 15vw;
+        height: 40vh;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 레이아웃. -->
+    <div id="root">
+      <!-- 처음 내용. -->
+      <div>
+        <div></div>
+      </div>
+      <!-- 중간 내용. -->
+      <div>
+        <!-- 햄버거 메뉴 이미지 넣기. -->
+        <div id="bergerMenu">
+          <!-- All surch box + button -->
+        </div>
+        <div>
+          <input type="text" name="serchBox" id="serchBox" />
+          <button>검색</button>
+        </div>
+      </div>
+      <!-- 세번째 내용. -->
+      <div>
+        <div id="userInfo">
+          <h2 style="text-align: center">user Info</h2>
+          <div class="infoBox">
+            <label for="userName">User</label>
+            <input type="text" name="user" id="userName" />
+          </div>
+          <div>
+            <label for="Assistant">Assistant</label>
+            <input type="text" name="Assistant" id="Assistant" />
+          </div>
+          <div>
+            <label for="">userAvatar</label>
+            <input type="text" name="userAvatar" id="userAvatar" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const root = document.getElementById("root");
+      console.dir(root);
+    </script>
+  </body>
+</html>
