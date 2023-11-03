@@ -136,17 +136,20 @@
       </div>
       <!-- 세번째 내용. -->
       <div>
-        <div id="userInfo">
-          <h2 style="text-align: center; margin: 10px">User Info</h2>
-          <div class="box1">
-            <label for="userID">UserID : </label>
-            <input type="submit" name="userID" id="userID" />
+        <form action="" method="post">
+          <div id="userInfo">
+            <h2 style="text-align: center; margin: 10px">User Info</h2>
+            <div class="box1">
+              <label for="userID">UserID : </label>
+              <input type="text" name="userID" id="userID" />
+            </div>
+            <div class="box2">
+              <label for="userPW">userPW : </label>
+              <input type="text" name="userPW" id="userPW" />
+            </div>
+            <input type="button" name="LoginB" id="LoginB" value="Login" />
           </div>
-          <div class="box2">
-            <label for="userPW">userPW : </label>
-            <input type="submit" name="userPW" id="userPW" />
-          </div>
-        </div>
+        </form>
         <div id="serchData"></div>
       </div>
     </div>
