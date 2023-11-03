@@ -62,11 +62,40 @@
         width: 100vw;
         height: 70vh;
         background-color: blue;
+        display: flex;
+        flex-wrap: nowrap;
       }
       #userInfo {
-        width: 15vw;
+        width: 20vw;
         height: 40vh;
         background-color: pink;
+      }
+      #userAvatar {
+        width: 13vw;
+        height: 20vh;
+      }
+      .box1 {
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      .box2 {
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      .box3 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      #serchData {
+        width: 80vw;
+        height: 70vh;
+        background-color: aquamarine;
       }
     </style>
   </head>
@@ -92,19 +121,20 @@
       <div>
         <div id="userInfo">
           <h2 style="text-align: center">user Info</h2>
-          <div class="infoBox">
-            <label for="userName">User</label>
+          <div class="box1">
+            <label for="userName">User : </label>
             <input type="text" name="user" id="userName" />
           </div>
-          <div>
-            <label for="Assistant">Assistant</label>
+          <div class="box2">
+            <label for="Assistant">Assistant : </label>
             <input type="text" name="Assistant" id="Assistant" />
           </div>
-          <div>
-            <label for="">userAvatar</label>
+          <div class="box3">
+            <label for="userAvatar">userAvatar</label>
             <input type="text" name="userAvatar" id="userAvatar" />
           </div>
         </div>
+        <div id="serchData"></div>
       </div>
     </div>
     <script>
