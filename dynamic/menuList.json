@@ -1,0 +1,20 @@
+{
+  "menuList": [
+    {
+      "text": "Home",
+      "url": "#menu1"
+    },
+    {
+      "text": "Profile",
+      "url": "#menu2"
+    },
+    {
+      "text": "settings",
+      "url": "#menu3"
+    },
+    {
+      "text": "Logout",
+      "url": "#menu4"
+    }
+  ]
+}
