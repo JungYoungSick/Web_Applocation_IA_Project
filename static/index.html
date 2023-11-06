@@ -67,10 +67,63 @@
 
       const menuList = document.getElementById("menuList");
       const bergerMenu = document.getElementById("bergerMenu");
+      const menuData = {
+        menuList: [
+          {
+            text: "Home",
+            url: "#menu1",
+          },
+          {
+            text: "Profile",
+            url: "#menu2",
+          },
+          {
+            text: "settings",
+            url: "#menu3",
+          },
+          {
+            text: "Logout",
+            url: "#menu4",
+          },
+        ],
+      };
 
       bergerMenu.addEventListener("click", () => {
         menuList.classList.toggle("show");
       });
+
+      // JavaScript를 사용하여 클릭 시 메뉴와 하위 메뉴를 토글합니다.
+      const submenuButton = document.getElementById("submenuButton");
+      const submenu = document.getElementById("submenu");
+
+      bergerMenu.addEventListener("click", () => {
+        menuList.classList.toggle("show");
+        submenu.classList.remove("show");
+      });
+
+      submenuButton.addEventListener("click", () => {
+        submenu.classList.toggle("show");
+      });
+      // JSON 데이터를 기반으로 메뉴를 생성합니다.
+      function createMenu(data, parent) {
+        const ul = document.createElement("ul");
+        data.forEach((item) => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.textContent = item.text;
+          a.href = item.url;
+          li.appendChild(a);
+          ul.appendChild(li);
+
+          // 하위 메뉴가 있는 경우 재귀적으로 생성합니다.
+          if (item.submenuItems) {
+            createMenu(item.submenuItems, li);
+          }
+        });
+        parent.appendChild(ul);
+      }
+
+      createMenu(menuData.menuItems, menuList);
 
       // HTML 요소에 대한 참조 가져오기
       const textBar = document.getElementById("textBar");
