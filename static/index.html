@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="index.css" />
+    <style></style>
   </head>
   <body>
     <!-- 레이아웃. -->
@@ -30,7 +31,7 @@
       <div>
         <form class="infopos" method="get">
           <div id="userInfo">
-            <h2 style="text-align: center; margin-bottom;: 10px">User Info</h2>
+            <h2 style="text-align: center; margin-bottom: 10px">User Info</h2>
             <div class="box1">
               <label for="userName">User : </label>
               <input type="text" name="user" id="userName" />
@@ -64,6 +65,33 @@
     <script>
       const root = document.getElementById("root");
       console.dir(root);
+
+      // HTML 요소에 대한 참조 가져오기
+      const textBar = document.getElementById("textBar");
+      const textButton = document.getElementById("textButton");
+      const prompt = document.getElementById("prompt");
+
+      // "보내기" 버튼을 클릭할 때 실행할 함수 정의
+      function sendMessage() {
+        const message = textBar.value; // textBar 입력 값 가져오기
+        const currentTime = new Date().toLocaleTimeString(); // 현재 시간 가져오기
+
+        // prompt에 메시지와 시간 추가
+        prompt.value += `(${currentTime}): ${message}\n`;
+
+        // textBar 내용 비우기
+        textBar.value = "";
+      }
+
+      // "보내기" 버튼 클릭 이벤트 처리
+      textButton.addEventListener("click", sendMessage);
+
+      // "textBar"에서 Enter 키를 누를 때 "보내기" 함수 실행
+      textBar.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          sendMessage();
+        }
+      });
     </script>
   </body>
 </html>
