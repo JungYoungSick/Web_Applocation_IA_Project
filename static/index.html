@@ -19,7 +19,7 @@
       <!-- 두번째 내용. -->
       <div>
         <!-- 햄버거 메뉴 이미지 넣기. -->
-        <div id="bergerMenu">🌐</div>
+        <div type="button" id="bergerMenu">🌐</div>
         <!-- All surch box + button -->
         <div>
           <input type="text" name="serchBox" id="serchBox" />
@@ -64,6 +64,13 @@
     <script>
       const root = document.getElementById("root");
       console.dir(root);
+
+      const menuList = document.getElementById("menuList");
+      const bergerMenu = document.getElementById("bergerMenu");
+
+      bergerMenu.addEventListener("click", () => {
+        menuList.classList.toggle("show");
+      });
 
       // HTML 요소에 대한 참조 가져오기
       const textBar = document.getElementById("textBar");
