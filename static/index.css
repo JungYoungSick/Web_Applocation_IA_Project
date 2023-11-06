@@ -60,9 +60,14 @@ button {
   height: 70vh;
   background-color: #f5f5f5;
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: ;
 }
 /* 유저 정보창 */
+.infopos {
+  display: flex;
+  align-items: flex-end;
+}
+
 #userInfo {
   width: 20vw;
   height: 40vh;
@@ -100,8 +105,35 @@ button {
   justify-content: center;
   flex-direction: column;
 }
-#serchData {
+/* 프롬프트 입력창. */
+#promptMain {
   width: 80vw;
   height: 70vh;
-  background-color: #f5f5f5;
+  background-color: red;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+#promptBox {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+}
+#prompt {
+  width: 76vw;
+  height: 56vh;
+  background-color: darkgoldenrod;
+  margin-bottom: 1vw;
+}
+#textBar {
+  width: 70vw;
+  height: 5vh;
+  background-color: aliceblue;
+  margin-bottom: 10px;
+}
+#textButton {
+  width: 6vw;
+  height: 5vh;
+  background-color: aqua;
 }

@@ -28,9 +28,9 @@
       </div>
       <!-- 세번째 내용. -->
       <div>
-        <form method="get">
+        <form class="infopos" method="get">
           <div id="userInfo">
-            <h2 style="text-align: center; margin: 10px">User Info</h2>
+            <h2 style="text-align: center; margin-bottom;: 10px">User Info</h2>
             <div class="box1">
               <label for="userName">User : </label>
               <input type="text" name="user" id="userName" />
@@ -45,7 +45,20 @@
             </div>
           </div>
         </form>
-        <div id="serchData"></div>
+        <div id="promptMain">
+          <div id="promptBox">
+            <input type="text" name="prompt" id="prompt" />
+            <div>
+              <input type="text" name="textBar" id="textBar" />
+              <input
+                type="submit"
+                name="textButton"
+                id="textButton"
+                value="보내기"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script>
