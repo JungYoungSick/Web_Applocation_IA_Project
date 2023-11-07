@@ -100,11 +100,12 @@
         })
           .then((response) => response.json())
           .then((data) => {
-            prompt.value += name+text+currentTime, "\n";
+            prompt.value += name+"  "+text+"  "+currentTime+"\n";
             textBar.value = "";
         });
         }
         });
+        console.log(userName.textContent)
     </script>
   </body>
 </html>

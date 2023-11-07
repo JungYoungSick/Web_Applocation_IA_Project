@@ -32,33 +32,32 @@ app.post('/jys/text', (req, res) => {
 
     fs.writeFile(notData, JSON.stringify(datas, null, 2), (err) => {
       if (err) {
-        return res.status(500).json({ error: "asdas" });
+        return res.status(500).json({ error: "errer" });
       }
       res.json(Datas)
     })
   })
 })
 
-
-
-
-
-app.post('/', (req, res) => {
-  const userID = req.body.userID;
-  const userPW = req.body.userPW;
-  const realUserID = 'green';
-  const realUserPW = '1234';
-  if (userID === realUserID && userPW === realUserPW) {
-    res.json({ success: false })
-    res.sendFile(__dirname + './static/index.html')
-
-  } else {
-    res.json({ success: true })
-  }
-});
 app.listen(port, () => {
   console.log(`
-서버가 포트 ${port}에서 실행 중입니다.
-http://localhost:${port}
-`);
+  서버가 포트 ${port}에서 실행 중입니다.
+  http://localhost:${port}
+  `);
 });
+
+
+
+// app.post('/', (req, res) => {
+//   const userID = req.body.userID;
+//   const userPW = req.body.userPW;
+//   const realUserID = 'green';
+//   const realUserPW = '1234';
+//   if (userID === realUserID && userPW === realUserPW) {
+//     res.json({ success: false })
+//     res.sendFile(__dirname + './static/index.html')
+
+//   } else {
+//     res.json({ success: true })
+//   }
+// });
