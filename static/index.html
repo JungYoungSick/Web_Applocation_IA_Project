@@ -34,7 +34,7 @@
             <h2 style="text-align: center; margin-bottom: 10px">User Info</h2>
             <div class="box1">
               <label for="userName">User : </label>
-              <input type="text" name="user" id="userName" />
+              <div type="text" name="user" id="userName">John Doe</div>
             </div>
             <div class="box2">
               <label for="Assistant"
@@ -106,18 +106,32 @@
         if(text) {
           const textData = {text};
           fetch('/jys/text', {
-          method: 'post',
+          method: 'POST',
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(textData),
+          
         })
           .then((response) => response.json())
           .then((data) => {
-            
-            
-        })
-        }})
+            prompt.value += text + "\n";
+            textBar.value = "";
+        });
+        }
+        // "GET" 요청을 사용하여 데이터 가져오기
+          fetch('/jys/text', {
+            method: 'GET',
+            headers: {
+              "Content-Type": "application/json",
+            }
+          })
+          .then((response) => response.json())
+          .then((data) => {
+              prompt.value = textData.join("\n");
+            }
+          )
+        });
       // "textBar"에서 Enter 키를 누를 때 "보내기" 함수 실행
       // textBar.addEventListener("keyup", (event) => {
       //   if (event.key === "Enter") {
