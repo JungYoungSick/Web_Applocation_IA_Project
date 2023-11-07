@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="index.css" type="text/css"/>
     <style></style>
   </head>
+  <form action="" method="get">
   <body>
     <!-- 레이아웃. -->
     <div id="root">
@@ -19,11 +20,10 @@
       <!-- 두번째 내용. -->
       <div>
         <!-- 햄버거 메뉴 이미지 넣기. -->
-        <div id="bergerMenu">
-          <!-- All surch box + button -->
-        </div>
+        <div id="bergerMenu">🌐</div>
+        <!-- All surch box + button -->
         <div>
-          <input type="text" name="serchBox" id="serchBox" />
+          <input type="search" name="serchBox" id="serchBox" />
           <button>검색</button>
         </div>
       </div>
@@ -34,15 +34,17 @@
             <h2 style="text-align: center; margin-bottom: 10px">User Info</h2>
             <div class="box1">
               <label for="userName">User : </label>
-              <input type="text" name="user" id="userName" />
+              <div type="text" name="user" id="userName">John Doe</div>
             </div>
             <div class="box2">
-              <label for="Assistant">Assistant : </label>
-              <input type="password" name="Assistant" id="Assistant" />
+              <label for="Assistant"
+                >Assistant : <span id="status">Online</span></label
+              >
+              <input type="checkbox" name="Assistant" id="Assistant" />
             </div>
             <div class="box3">
               <label for="userAvatar">userAvatar</label>
-              <input type="text" name="userAvatar" id="userAvatar" />
+              <div type="text" name="userAvatar" id="userAvatar">👤</div>
             </div>
           </div>
         </form>
@@ -52,7 +54,7 @@
             <div>
               <input type="text" name="textBar" id="textBar" />
               <input
-                type="submit"
+                type="button"
                 name="textButton"
                 id="textButton"
                 value="보내기"
@@ -62,14 +64,26 @@
         </div>
       </div>
     </div>
+  </form>
     <script>
       const root = document.getElementById("root");
-      console.dir(root);
-
-      // HTML 요소에 대한 참조 가져오기
+      const checkbox = document.getElementById("Assistant");
+      const statusMessage = document.getElementById("status");
       const textBar = document.getElementById("textBar");
       const textButton = document.getElementById("textButton");
       const prompt = document.getElementById("prompt");
+
+
+      // 체크박스 상태 변경 시 이벤트 핸들러 등록
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+          statusMessage.textContent = "Offline";
+        } else {
+          statusMessage.textContent = "Online";
+        }
+      });
+
+      // HTML 요소에 대한 참조 가져오기
 
       // "보내기" 버튼을 클릭할 때 실행할 함수 정의
       function sendMessage() {
@@ -86,18 +100,47 @@
         textBar.value = "";
       }
 
-      // "보내기" 버튼 클릭 이벤트 처리
-      textButton.addEventListener("click", sendMessage);
 
-      // "textBar"에서 Enter 키를 누를 때 "보내기" 함수 실행
-      textBar.addEventListener("keyup", (event) => {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          event.stopPropagation();
-          sendMessage();
-          textButton.blur("click"); // 버튼의 포커스 해제
+      textButton.addEventListener("click",() =>{
+        const text = textBar.value;
+        if(text) {
+          const textData = {text};
+          fetch('/jys/text', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(textData),
+          
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            prompt.value += text + "\n";
+            textBar.value = "";
+        });
         }
-      });
+        // "GET" 요청을 사용하여 데이터 가져오기
+          fetch('/jys/text', {
+            method: 'GET',
+            headers: {
+              "Content-Type": "application/json",
+            }
+          })
+          .then((response) => response.json())
+          .then((data) => {
+              prompt.value = textData.join("\n");
+            }
+          )
+        });
+      // "textBar"에서 Enter 키를 누를 때 "보내기" 함수 실행
+      // textBar.addEventListener("keyup", (event) => {
+      //   if (event.key === "Enter") {
+      //     event.preventDefault();
+      //     event.stopPropagation();
+      //     sendMessage();
+      //     textButton.blur("click"); // 버튼의 포커스 해제
+      //   }
+      // });
     </script>
   </body>
 </html>

@@ -34,11 +34,8 @@
 }
 /* 햄버거 메뉴 */
 #bergerMenu {
-  width: 70px;
-  height: 50px;
-  background-image: url("../bergerIMG.jpg");
-  background-repeat: round;
-  margin-left: 15px;
+  font-size: 40px;
+  margin-left: 10px;
 }
 /* 검색 박스 */
 #serchBox {
@@ -85,6 +82,8 @@ button {
 #userAvatar {
   width: 13vw;
   height: 20vh;
+  font-size: 100px;
+  text-align: center;
 }
 .box1 {
   display: flex;
