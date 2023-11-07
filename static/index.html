@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="index.css" type="text/css"/>
     <style></style>
   </head>
   <form action="" method="get">
@@ -54,7 +54,7 @@
             <div>
               <input type="text" name="textBar" id="textBar" />
               <input
-                type="submit"
+                type="button"
                 name="textButton"
                 id="textButton"
                 value="보내기"
@@ -69,6 +69,10 @@
       const root = document.getElementById("root");
       const checkbox = document.getElementById("Assistant");
       const statusMessage = document.getElementById("status");
+      const textBar = document.getElementById("textBar");
+      const textButton = document.getElementById("textButton");
+      const prompt = document.getElementById("prompt");
+
 
       // 체크박스 상태 변경 시 이벤트 핸들러 등록
       checkbox.addEventListener("change", function () {
@@ -80,9 +84,6 @@
       });
 
       // HTML 요소에 대한 참조 가져오기
-      const textBar = document.getElementById("textBar");
-      const textButton = document.getElementById("textButton");
-      const prompt = document.getElementById("prompt");
 
       // "보내기" 버튼을 클릭할 때 실행할 함수 정의
       function sendMessage() {
@@ -99,18 +100,33 @@
         textBar.value = "";
       }
 
-      // "보내기" 버튼 클릭 이벤트 처리
-      textButton.addEventListener("click", sendMessage);
 
+      textButton.addEventListener("click",() =>{
+        const text = textBar.value;
+        if(text) {
+          const textData = {text};
+          fetch('/jys/text', {
+          method: 'post',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(textData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            
+            
+        })
+        }})
       // "textBar"에서 Enter 키를 누를 때 "보내기" 함수 실행
-      textBar.addEventListener("keyup", (event) => {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          event.stopPropagation();
-          sendMessage();
-          textButton.blur("click"); // 버튼의 포커스 해제
-        }
-      });
+      // textBar.addEventListener("keyup", (event) => {
+      //   if (event.key === "Enter") {
+      //     event.preventDefault();
+      //     event.stopPropagation();
+      //     sendMessage();
+      //     textButton.blur("click"); // 버튼의 포커스 해제
+      //   }
+      // });
     </script>
   </body>
 </html>
