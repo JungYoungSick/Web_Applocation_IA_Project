@@ -65,15 +65,18 @@
       </div>
     </div>
   </form>
-    <script>
-      const root = document.getElementById("root");
-      const checkbox = document.getElementById("Assistant");
-      const statusMessage = document.getElementById("status");
-      const textBar = document.getElementById("textBar");
-      const textButton = document.getElementById("textButton");
-      const prompt = document.getElementById("prompt");
-
-
+  <script>
+    const root = document.getElementById("root");
+    const checkbox = document.getElementById("Assistant");
+    const statusMessage = document.getElementById("status");
+    const textBar = document.getElementById("textBar");
+    const textButton = document.getElementById("textButton");
+    const prompt = document.getElementById("prompt");
+    const options = { hour: "2-digit", minute: "2-digit" };
+    const currentTime = new Date().toLocaleTimeString(undefined, options);
+    const userName = document.getElementById("userName");
+    
+    
       // 체크박스 상태 변경 시 이벤트 핸들러 등록
       checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
@@ -82,29 +85,11 @@
           statusMessage.textContent = "Online";
         }
       });
-
-      // HTML 요소에 대한 참조 가져오기
-
-      // "보내기" 버튼을 클릭할 때 실행할 함수 정의
-      function sendMessage() {
-        const message = textBar.value; // textBar 입력 값 가져오기
-        const options = { hour: "2-digit", minute: "2-digit" };
-        const currentTime = new Date().toLocaleTimeString(undefined, options);
-        // 현재 시간 가져오기
-        const userName = document.getElementById("userName");
-        // const userName2 = userName.Input.value;
-        // prompt에 메시지와 시간 추가
-        prompt.value += `${userName}:${message}(${currentTime})\n`;
-
-        // textBar 내용 비우기
-        textBar.value = "";
-      }
-
-
+      const name = userName.textContent
       textButton.addEventListener("click",() =>{
         const text = textBar.value;
         if(text) {
-          const textData = {text};
+          const textData = {userName, text, currentTime};
           fetch('/jys/text', {
           method: 'POST',
           headers: {
@@ -115,7 +100,7 @@
         })
           .then((response) => response.json())
           .then((data) => {
-            prompt.value += text + "\n";
+            prompt.value += name+text+currentTime, "\n";
             textBar.value = "";
         });
         }
