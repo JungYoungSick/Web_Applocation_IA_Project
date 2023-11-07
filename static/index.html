@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="index.css" />
     <style></style>
   </head>
+  <form action="" method="get">
   <body>
     <!-- 레이아웃. -->
     <div id="root">
@@ -19,10 +20,10 @@
       <!-- 두번째 내용. -->
       <div>
         <!-- 햄버거 메뉴 이미지 넣기. -->
-        <div>🌐</div>
+        <div id="bergerMenu">🌐</div>
         <!-- All surch box + button -->
         <div>
-          <input type="text" name="serchBox" id="serchBox" />
+          <input type="search" name="serchBox" id="serchBox" />
           <button>검색</button>
         </div>
       </div>
@@ -36,8 +37,10 @@
               <input type="text" name="user" id="userName" />
             </div>
             <div class="box2">
-              <label for="Assistant">Assistant : </label>
-              <input type="password" name="Assistant" id="Assistant" />
+              <label for="Assistant"
+                >Assistant : <span id="status">Online</span></label
+              >
+              <input type="checkbox" name="Assistant" id="Assistant" />
             </div>
             <div class="box3">
               <label for="userAvatar">userAvatar</label>
@@ -61,9 +64,20 @@
         </div>
       </div>
     </div>
+  </form>
     <script>
       const root = document.getElementById("root");
-      console.dir(root);
+      const checkbox = document.getElementById("Assistant");
+      const statusMessage = document.getElementById("status");
+
+      // 체크박스 상태 변경 시 이벤트 핸들러 등록
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+          statusMessage.textContent = "Offline";
+        } else {
+          statusMessage.textContent = "Online";
+        }
+      });
 
       // HTML 요소에 대한 참조 가져오기
       const textBar = document.getElementById("textBar");

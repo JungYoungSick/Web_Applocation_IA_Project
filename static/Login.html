@@ -40,13 +40,7 @@
         align-items: center;
       }
       /* 햄버거 메뉴 */
-      #bergerMenu {
-        width: 70px;
-        height: 50px;
-        background-image: url("../bergerIMG.jpg");
-        background-repeat: round;
-        margin-left: 15px;
-      }
+
       /* 검색 박스 */
       #serchBox {
         width: 300px;
@@ -115,47 +109,70 @@
     </style>
   </head>
   <body>
-    <!-- 레이아웃. -->
-    <div id="root">
-      <!-- 첫번째 내용. -->
-      <div>
+    <form action="" method="get">
+      <!-- 레이아웃. -->
+      <div id="root">
+        <!-- 첫번째 내용. -->
         <div>
-          <h1></h1>
-        </div>
-      </div>
-      <!-- 두번째 내용. -->
-      <div>
-        <!-- 햄버거 메뉴 이미지 넣기. -->
-        <div id="bergerMenu">
-          <!-- All surch box + button -->
-        </div>
-        <div>
-          <input type="text" name="serchBox" id="serchBox" />
-          <button>검색</button>
-        </div>
-      </div>
-      <!-- 세번째 내용. -->
-      <div>
-        <form action="" method="post">
-          <div id="userInfo">
-            <h2 style="text-align: center; margin: 10px">User Info</h2>
-            <div class="box1">
-              <label for="userID">UserID : </label>
-              <input type="text" name="userID" id="userID" />
-            </div>
-            <div class="box2">
-              <label for="userPW">userPW : </label>
-              <input type="text" name="userPW" id="userPW" />
-            </div>
-            <input type="button" name="LoginB" id="LoginB" value="Login" />
+          <div>
+            <h1></h1>
           </div>
-        </form>
-        <div id="serchData"></div>
+        </div>
+        <!-- 두번째 내용. -->
+        <div>
+          <!-- 햄버거 메뉴 이미지 넣기. -->
+          <div id="bergerMenu">
+            <!-- All surch box + button -->
+          </div>
+          <div>
+            <input type="text" name="serchBox" id="serchBox" />
+            <button>검색</button>
+          </div>
+        </div>
+        <!-- 세번째 내용. -->
+        <div>
+          <form action="" method="post">
+            <div id="userInfo">
+              <h2 style="text-align: center; margin: 10px">User Info</h2>
+              <div class="box1">
+                <label for="userID">UserID : </label>
+                <input type="text" name="userID" id="userID" />
+              </div>
+              <div class="box2">
+                <label for="userPW">userPW : </label>
+                <input type="text" name="userPW" id="userPW" />
+              </div>
+              <input type="button" name="LoginB" id="LoginB" value="Login" />
+            </div>
+          </form>
+          <div id="serchData"></div>
+        </div>
       </div>
-    </div>
+    </form>
     <script>
-      const root = document.getElementById("root");
-      console.dir(root);
+      // 폼 제출 시 이벤트 핸들러
+      const LoginB = document.getElementById("LoginB");
+      LoginB.addEventListener("click", function () {
+        const userID = document.getElementById("userID").value;
+        const userPW = document.getElementById("userPW").value;
+        fetch("/", {
+          method: "post",
+          headers: {
+            "Content-Type": "text/html",
+          },
+          body: JSON.stringify({ userID, userPW }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              // 로그인 성공 시 페이지 리디렉션
+              window.location.href = "http://localhost:3000/static/index.html";
+            } else {
+              alert("로그인 실패");
+            }
+          })
+          .catch((error) => console.error("오류:", error));
+      });
     </script>
   </body>
 </html>
