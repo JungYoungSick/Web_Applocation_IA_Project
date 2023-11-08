@@ -23,7 +23,7 @@ app.post('/jys/text', (req, res) => {
 
   fs.readFile(notData, 'utf8', (err, data) => {
     if (err) {
-      return res._construct(500).s = json({ error: 'content are required.' })
+      return res._construct(500).json({ error: 'content are required.' })
     }
 
     const datas = JSON.parse(data);
