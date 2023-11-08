@@ -20,7 +20,14 @@
       <!-- 두번째 내용. -->
       <div>
         <!-- 햄버거 메뉴 이미지 넣기. -->
-        <div id="bergerMenu">🌐</div>
+        <div type="button" id="bergerMenu" class="hidden">🌐
+            <ul>
+              <li>Home</li>
+              <li>Profile</li>
+              <li>Settings</li>
+              <li>Logout</li>
+            </ul>
+        </div>
         <!-- All surch box + button -->
         <div>
           <input type="search" name="serchBox" id="serchBox" />
@@ -76,6 +83,12 @@
     const currentTime = new Date().toLocaleTimeString(undefined, options);
     const userName = document.getElementById("userName");
     
+    //햄버거 버튼 만들기.
+    const menuButton = document.getElementById('bergerMenu');
+    const bergerMenu = document.getElementById('bergermenu');
+    menuButton.addEventListener('click', () => {
+      bergerMenu.classList.toggle('hidden');
+    });
     // 체크박스를 이용한 on/off-line 표시
       checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
@@ -106,14 +119,14 @@
         });
         
         // 프롬프트 get방식 전달 작업 하다가 말았다. 
-        // prompt.
-        // fetch('prompt'), {
-        //   method:"get",
-        //   headers: {
-        //     "Content-Type": "application/json"
-        //   },
-        //   body:JSON.stringify(prompt)
-        // }
+        prompt.
+        fetch('prompt'), {
+          method:"get",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body:JSON.stringify(prompt)
+        }
     </script>
   </body>
 </html>
