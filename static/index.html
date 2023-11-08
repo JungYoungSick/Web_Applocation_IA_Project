@@ -33,7 +33,7 @@
           <div id="userInfo">
             <h2 style="text-align: center; margin-bottom: 10px">User Info</h2>
             <div class="box1">
-              <label for="userName">User : </label>
+              <label for="userName">User :</label>
               <div type="text" name="user" id="userName">John Doe</div>
             </div>
             <div class="box2">
@@ -76,13 +76,12 @@
     const currentTime = new Date().toLocaleTimeString(undefined, options);
     const userName = document.getElementById("userName");
     
-    
-      // 체크박스 상태 변경 시 이벤트 핸들러 등록
+    // 체크박스를 이용한 on/off-line 표시
       checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
-          statusMessage.textContent = "Offline";
+          statusMessage.textContent = "Off-line";
         } else {
-          statusMessage.textContent = "Online";
+          statusMessage.textContent = "On-line";
         }
       });
       const name = userName.textContent
@@ -105,6 +104,7 @@
         });
         }
         });
+        
         // 프롬프트 get방식 전달 작업 하다가 말았다. 
         // prompt.
         // fetch('prompt'), {

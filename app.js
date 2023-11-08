@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + 'index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.post('/jys/text', (req, res) => {
@@ -38,6 +38,49 @@ app.post('/jys/text', (req, res) => {
     })
   })
 })
+// app.get('index/prompt', (req, res) => {
+//   fs.writeFile(notData,'utf-8', (err,data) => {
+//     if(err) {
+//       return res._con
+//     }
+//   })
+//   res.
+
+// })
+// script.js
+
+// 함수: JSON 데이터 불러오기
+// function loadData() {
+//   fetch('notData.json')
+//     .then(response => response.json())
+//     .then(data => {
+//       // 데이터를 Local Storage에 저장
+//       localStorage.setItem('text', JSON.stringify(data));
+//       displayData(data);
+//     })
+//     .catch(error => {
+//       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+//     });
+// }
+// const prompt = document.getElementById('prompt');
+// console.log("prompt")
+
+// // 함수: JSON 데이터 표시
+// function displayData(data) {
+//   prompt.textContent = JSON.stringify(data, null, 2);
+// }
+
+// 페이지 로드 시 실행
+// document.addEventListener('DOMContentLoaded', () => {
+//   const promptData = localStorage.getItem('text');
+//   if (promptData) {
+//     // Local Storage에 데이터가 이미 저장되어 있는 경우
+//     displayData(JSON.parse(promptData));
+//   } else {
+//     // Local Storage에 데이터가 없는 경우, JSON 데이터를 불러오기
+//     loadData();
+//   }
+// });
 
 app.listen(port, () => {
   console.log(`
