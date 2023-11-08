@@ -21,19 +21,21 @@
       <div>
         <!-- 햄버거 메뉴 이미지 넣기. -->
         <div>
-          <div id="menuButton">🌐</div>
-            <ul id="bergerMenu">
+          <div id="menuButton" >🌐</div>
+          <div id="menuContainer" >
+            <ul id="bergerMenu" class="hidden">
               <li>Home</li>
               <li>Profile</li>
               <li>Settings</li>
               <li>Logout</li>
             </ul>
-          </div>    
+          </div>
+        </div>
         <!-- All surch box + button -->
-                  <!-- <div>
+                  <div>
                     <input type="search" name="serchBox" id="serchBox" />
                     <button>검색</button>
-                  </div> -->
+                  </div>
       </div>
       <!-- 세번째 내용. -->
       <div>
@@ -89,9 +91,17 @@
     //햄버거 버튼 만들기.
     const menuButton = document.getElementById('menuButton');
     const bergerMenu = document.getElementById('bergerMenu');
+    let isMenuVisible = true;
+
     menuButton.addEventListener('click', () => {
-      bergerMenu.classList.toggle('hidden');
+    isMenuVisible = !isMenuVisible;
+    if (isMenuVisible) {
+      bergerMenu.style.display = 'none';
+    } else {
+      bergerMenu.style.display = 'inline'; // 또는 'block'
+    }
     });
+
     // 체크박스를 이용한 on/off-line 표시
       checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
