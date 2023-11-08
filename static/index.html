@@ -20,41 +20,44 @@
       <!-- 두번째 내용. -->
       <div>
         <!-- 햄버거 메뉴 이미지 넣기. -->
-        <div type="button" id="bergerMenu" class="hidden">🌐
-            <ul>
+        <div>
+          <div id="menuButton">🌐</div>
+            <ul id="bergerMenu">
               <li>Home</li>
               <li>Profile</li>
               <li>Settings</li>
               <li>Logout</li>
             </ul>
-        </div>
+          </div>    
         <!-- All surch box + button -->
-        <div>
-          <input type="search" name="serchBox" id="serchBox" />
-          <button>검색</button>
-        </div>
+                  <!-- <div>
+                    <input type="search" name="serchBox" id="serchBox" />
+                    <button>검색</button>
+                  </div> -->
       </div>
       <!-- 세번째 내용. -->
       <div>
-        <form class="infopos" method="get">
-          <div id="userInfo">
-            <h2 style="text-align: center; margin-bottom: 10px">User Info</h2>
-            <div class="box1">
-              <label for="userName">User :</label>
-              <div type="text" name="user" id="userName">John Doe</div>
-            </div>
-            <div class="box2">
-              <label for="Assistant"
-                >Assistant : <span id="status">Online</span></label
-              >
-              <input type="checkbox" name="Assistant" id="Assistant" />
-            </div>
-            <div class="box3">
-              <label for="userAvatar">userAvatar</label>
-              <div type="text" name="userAvatar" id="userAvatar">👤</div>
+        <!-- <form method="get"> -->
+          <div id="infoBax">
+            <div id="userInfo">
+              <h2 style="text-align: center; margin-bottom: 10px">User Info</h2>
+              <div class="box1">
+                <label for="userName">User :</label>
+                <div type="text" name="user" id="userName">John Doe</div>
+              </div>
+              <div class="box2">
+                <label for="Assistant"
+                  >Assistant : <span id="status">Online</span></label
+                >
+                <input type="checkbox" name="Assistant" id="Assistant" />
+              </div>
+              <div class="box3">
+                <label for="userAvatar">userAvatar</label>
+                <div type="text" name="userAvatar" id="userAvatar">👤</div>
+              </div>
             </div>
           </div>
-        </form>
+        <!-- </form> -->
         <div id="promptMain">
           <div id="promptBox">
             <textarea id="prompt" style="white-space: pre-line"></textarea>
@@ -84,8 +87,8 @@
     const userName = document.getElementById("userName");
     
     //햄버거 버튼 만들기.
-    const menuButton = document.getElementById('bergerMenu');
-    const bergerMenu = document.getElementById('bergermenu');
+    const menuButton = document.getElementById('menuButton');
+    const bergerMenu = document.getElementById('bergerMenu');
     menuButton.addEventListener('click', () => {
       bergerMenu.classList.toggle('hidden');
     });
