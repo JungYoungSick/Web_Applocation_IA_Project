@@ -77,61 +77,9 @@
       </div>
     </div>
   </form>
+  <script src="./static/index.js" type="module"></script>
   <script>
     const root = document.getElementById("root");
-    const checkbox = document.getElementById("Assistant");
-    const statusMessage = document.getElementById("status");
-    const textBar = document.getElementById("textBar");
-    const textButton = document.getElementById("textButton");
-    const prompt = document.getElementById("prompt");
-    const options = { hour: "2-digit", minute: "2-digit" };
-    const currentTime = new Date().toLocaleTimeString(undefined, options);
-    const userName = document.getElementById("userName");
-    
-    //햄버거 버튼 만들기.
-    const menuButton = document.getElementById('menuButton');
-    const bergerMenu = document.getElementById('bergerMenu');
-    let isMenuVisible = true;
-
-    menuButton.addEventListener('click', () => {
-    isMenuVisible = !isMenuVisible;
-    if (isMenuVisible) {
-      bergerMenu.style.display = 'none';
-    } else {
-      bergerMenu.style.display = 'inline'; // 또는 'block'
-    }
-    });
-
-    // 체크박스를 이용한 on/off-line 표시
-      checkbox.addEventListener("change", function () {
-        if (checkbox.checked) {
-          statusMessage.textContent = "Off-line";
-        } else {
-          statusMessage.textContent = "On-line";
-        }
-      });
-      const name = userName.textContent
-      textButton.addEventListener("click",() =>{
-        const text = textBar.value;
-        if(text) {
-          const textData = {userName, text, currentTime};
-          fetch('/jys/text', {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(textData),
-          
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            prompt.value += name+"  "+text+"  "+currentTime+"\n";
-            textBar.value = "";
-        });
-        }
-        });
-        
-        // 프롬프트 get방식 전달 작업 하다가 말았다. 
         prompt.
         fetch('prompt'), {
           method:"get",
