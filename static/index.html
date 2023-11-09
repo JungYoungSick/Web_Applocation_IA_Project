@@ -4,42 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="index.css" type="text/css"/>
+    <link rel="stylesheet" href="index.css" type="text/css" />
     <style></style>
   </head>
-  <form action="" method="get">
   <body>
-    <!-- 레이아웃. -->
-    <div id="root">
-      <!-- 첫번째 내용. -->
-      <div>
+    <form action="" method="get">
+      <!-- 레이아웃. -->
+      <div id="root">
+        <!-- 첫번째 내용. -->
         <div>
-          <h1></h1>
-        </div>
-      </div>
-      <!-- 두번째 내용. -->
-      <div>
-        <!-- 햄버거 메뉴 이미지 넣기. -->
-        <div>
-          <div id="menuButton" >🌐</div>
-          <div id="menuContainer" >
-            <ul id="bergerMenu" class="hidden">
-              <li>Home</li>
-              <li>Profile</li>
-              <li>Settings</li>
-              <li>Logout</li>
-            </ul>
+          <div>
+            <h1></h1>
           </div>
         </div>
-        <!-- All surch box + button -->
+        <!-- 두번째 내용. -->
         <div>
-          <input type="search" name="serchBox" id="serchBox" />
-          <button>검색</button>
+          <!-- 햄버거 메뉴 이미지 넣기. -->
+          <div>
+            <div id="menuButton">🌐</div>
+            <div id="menuContainer">
+              <ul id="bergerMenu" class="hidden">
+                <li>Home</li>
+                <li>Profile</li>
+                <li>Settings</li>
+                <li>Logout</li>
+              </ul>
+            </div>
+          </div>
+          <!-- All surch box + button -->
+          <div>
+            <input type="search" name="serchBox" id="serchBox" />
+            <button>검색</button>
+          </div>
         </div>
-      </div>
-      <!-- 세번째 내용. -->
-      <div>
-        <!-- <form method="get"> -->
+        <!-- 세번째 내용. -->
+        <div>
+          <!-- <form method="get"> -->
           <div id="infoBax">
             <div id="userInfo">
               <h2 style="text-align: center; margin-bottom: 10px">User Info</h2>
@@ -59,35 +59,37 @@
               </div>
             </div>
           </div>
-        <!-- </form> -->
-        <div id="promptMain">
-          <div id="promptBox">
-            <textarea id="prompt" style="white-space: pre-line"></textarea>
-            <div>
-              <input type="text" name="textBar" id="textBar" />
-              <input
-                type="button"
-                name="textButton"
-                id="textButton"
-                value="보내기"
-              />
+          <!-- </form> -->
+          <div id="promptMain">
+            <div id="promptBox">
+              <textarea id="prompt" style="white-space: pre-line"></textarea>
+              <div>
+                <input type="text" name="textBar" id="textBar" />
+                <input
+                  type="button"
+                  name="textButton"
+                  id="textButton"
+                  value="보내기"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
-  <script src="./static/index.js" type="module"></script>
-  <script>
-    const root = document.getElementById("root");
-        prompt.
-        fetch('prompt'), {
-          method:"get",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body:JSON.stringify(prompt)
-        }
+    </form>
+    <script src="./index.js" type="module">
+      const menuButton = document.getElementById('menuButton');
+      const bergerMenu = document.getElementById('bergerMenu');
+      const checkbox = document.getElementById("Assistant");
+      const statusMessage = document.getElementById("status");
+      const userName = document.getElementById("userName");
+      const prompt = document.getElementById("prompt");
+      const options = { hour: "2-digit", minute: "2-digit" };
+      const currentTime = new Date().toLocaleTimeString(undefined, options);
+      const textBar = document.getElementById("textBar");
+      const textButton = document.getElementById("textButton");
+      const name = userName.textContent
+      const text = textBar.value;
     </script>
   </body>
 </html>
