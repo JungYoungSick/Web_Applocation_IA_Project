@@ -2,17 +2,15 @@ const jsonServing = () => {
 
 
   textButton.addEventListener("click", () => {
-    const userName = document.getElementById("userName");
-    const prompt = document.getElementById("prompt");
-    const options = { hour: "2-digit", minute: "2-digit" };
-    const currentTime = new Date().toLocaleTimeString(undefined, options);
-    const textBar = document.getElementById("textBar");
-    const textButton = document.getElementById("textButton");
-    const name = userName.textContent
-    const text = textBar.value;
-
     if (text) {
+      const userName = document.getElementById("userName");
+      const text = textBar.value;
+      const currentTime = new Date().toLocaleTimeString(undefined, options);
+      const options = { hour: "2-digit", minute: "2-digit" };
       const textData = { userName, text, currentTime };
+      const prompt = document.getElementById("prompt");
+      const name = userName.value;
+
       fetch('/jys/text', {
         method: 'POST',
         headers: {
