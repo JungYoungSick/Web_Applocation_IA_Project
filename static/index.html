@@ -4,42 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="index.css" type="text/css"/>
+    <link rel="stylesheet" href="index.css" type="text/css" />
     <style></style>
   </head>
-  <form action="" method="get">
   <body>
-    <!-- 레이아웃. -->
-    <div id="root">
-      <!-- 첫번째 내용. -->
-      <div>
+    <form action="" method="get">
+      <!-- 레이아웃. -->
+      <div id="root">
+        <!-- 첫번째 내용. -->
         <div>
-          <h1></h1>
-        </div>
-      </div>
-      <!-- 두번째 내용. -->
-      <div>
-        <!-- 햄버거 메뉴 이미지 넣기. -->
-        <div>
-          <div id="menuButton" >🌐</div>
-          <div id="menuContainer" >
-            <ul id="bergerMenu" class="hidden">
-              <li>Home</li>
-              <li>Profile</li>
-              <li>Settings</li>
-              <li>Logout</li>
-            </ul>
+          <div>
+            <h1></h1>
           </div>
         </div>
-        <!-- All surch box + button -->
+        <!-- 두번째 내용. -->
         <div>
-          <input type="search" name="serchBox" id="serchBox" />
-          <button>검색</button>
+          <!-- 햄버거 메뉴 이미지 넣기. -->
+          <div>
+            <div id="menuButton">🌐</div>
+            <div id="menuContainer">
+              <ul id="bergerMenu" class="hidden">
+                <li>Home</li>
+                <li>Profile</li>
+                <li>Settings</li>
+                <li>Logout</li>
+              </ul>
+            </div>
+          </div>
+          <!-- All surch box + button -->
+          <div>
+            <input type="search" name="serchBox" id="serchBox" />
+            <button>검색</button>
+          </div>
         </div>
-      </div>
-      <!-- 세번째 내용. -->
-      <div>
-        <!-- <form method="get"> -->
+        <!-- 세번째 내용. -->
+        <div>
+          <!-- <form method="get"> -->
           <div id="infoBax">
             <div id="userInfo">
               <h2 style="text-align: center; margin-bottom: 10px">User Info</h2>
@@ -59,87 +59,24 @@
               </div>
             </div>
           </div>
-        <!-- </form> -->
-        <div id="promptMain">
-          <div id="promptBox">
-            <textarea id="prompt" style="white-space: pre-line"></textarea>
-            <div>
-              <input type="text" name="textBar" id="textBar" />
-              <input
-                type="button"
-                name="textButton"
-                id="textButton"
-                value="보내기"
-              />
+          <!-- </form> -->
+          <div id="promptMain">
+            <div id="promptBox">
+              <textarea id="prompt" style="white-space: pre-line"></textarea>
+              <div>
+                <input type="text" name="textBar" id="textBar" />
+                <input
+                  type="button"
+                  name="textButton"
+                  id="textButton"
+                  value="보내기"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
-  <script>
-    const root = document.getElementById("root");
-    const checkbox = document.getElementById("Assistant");
-    const statusMessage = document.getElementById("status");
-    const textBar = document.getElementById("textBar");
-    const textButton = document.getElementById("textButton");
-    const prompt = document.getElementById("prompt");
-    const options = { hour: "2-digit", minute: "2-digit" };
-    const currentTime = new Date().toLocaleTimeString(undefined, options);
-    const userName = document.getElementById("userName");
-    
-    //햄버거 버튼 만들기.
-    const menuButton = document.getElementById('menuButton');
-    const bergerMenu = document.getElementById('bergerMenu');
-    let isMenuVisible = true;
-
-    menuButton.addEventListener('click', () => {
-    isMenuVisible = !isMenuVisible;
-    if (isMenuVisible) {
-      bergerMenu.style.display = 'none';
-    } else {
-      bergerMenu.style.display = 'inline'; // 또는 'block'
-    }
-    });
-
-    // 체크박스를 이용한 on/off-line 표시
-      checkbox.addEventListener("change", function () {
-        if (checkbox.checked) {
-          statusMessage.textContent = "Off-line";
-        } else {
-          statusMessage.textContent = "On-line";
-        }
-      });
-      const name = userName.textContent
-      textButton.addEventListener("click",() =>{
-        const text = textBar.value;
-        if(text) {
-          const textData = {userName, text, currentTime};
-          fetch('/jys/text', {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(textData),
-          
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            prompt.value += name+"  "+text+"  "+currentTime+"\n";
-            textBar.value = "";
-        });
-        }
-        });
-        
-        // 프롬프트 get방식 전달 작업 하다가 말았다. 
-        prompt.
-        fetch('prompt'), {
-          method:"get",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body:JSON.stringify(prompt)
-        }
-    </script>
+    </form>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>

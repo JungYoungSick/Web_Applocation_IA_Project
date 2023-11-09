@@ -14,6 +14,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.js'));
+});
 
 app.post('/jys/text', (req, res) => {
   const { text } = req.body;
