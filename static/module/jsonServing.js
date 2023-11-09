@@ -1,12 +1,12 @@
-const jsonServing = () => {
+const jsonServing = (text, options) => {
 
 
   textButton.addEventListener("click", () => {
     if (text) {
       const userName = document.getElementById("userName");
+      const textBar = document.getElementById("textBar");
       const text = textBar.value;
       const currentTime = new Date().toLocaleTimeString(undefined, options);
-      const options = { hour: "2-digit", minute: "2-digit" };
       const textData = { userName, text, currentTime };
       const prompt = document.getElementById("prompt");
       const name = userName.value;
